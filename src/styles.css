@@ -259,4 +259,12 @@ button { border: 0; background: transparent; color: inherit; cursor: pointer; }
   .modal-pdf { height: 55vh; }
   .project-info { padding: 20px; border-radius: 20px; }
   .project-pager a { max-width: 48%; }
+  .modal-info { padding: 26px 20px 16px; }
+  .modal-info > div:first-child { padding-right: 56px; }
+  .modal-info h2 { font-size: 34px; margin: 22px 0 10px; }
+  .modal-info p { font-size: 14px; margin: 0; }
+  .modal-tags { margin-top: 12px; }
+  .project-page { padding-top: 28px; }
+  .back-link { margin-bottom: 18px; }
+  .project-info h1 { font-size: 36px; }
 }

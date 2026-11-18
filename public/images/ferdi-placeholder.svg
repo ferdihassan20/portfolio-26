@@ -2,5 +2,5 @@
   <rect width="800" height="1000" fill="#2d3d8f"/>
   <circle cx="400" cy="380" r="150" fill="#1b2455"/>
   <path d="M130 1000c0-170 120-300 270-300s270 130 270 300z" fill="#1b2455"/>
-  <text x="400" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" letter-spacing="6" fill="#d5e978">PHOTO PLACEHOLDER</text>
+  <text x="400" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" letter-spacing="6" fill="#d5e978">PHOTO PLACEHOLDER</text>
 </svg>
