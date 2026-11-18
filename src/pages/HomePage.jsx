@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import ProjectVisual from '../components/ProjectVisual';
+import SocialIcon from '../components/SocialIcons';
 import LegacyProjectModal from '../components/LegacyProjectModal';
 import { filters, getPublishedProjects } from '../data/projects';
 import { site } from '../data/site';
@@ -128,9 +129,9 @@ export default function HomePage() {
           <section id="experience" className="experience section-pad">
             <div className="section-heading section-heading-row reveal"><div><span className="section-number">04</span><h2>EXPERIENCE<br /><span>BY THREAD.</span></h2></div><p className="section-caption">The labels change. The thread doesn’t: business questions, systems, and the space between them.</p></div>
             <div className="experience-grid">
-              <div className="experience-item reveal"><div className="experience-date">2026</div><div className="experience-main"><div className="experience-tag"><BriefcaseBusiness size={15} /> BUSINESS DEVELOPMENT</div><h3>Telkom Corporate University</h3><p>Product and pricing research, process mapping, standardisation, and digital learning ecosystem work inside Solution Management.</p></div><div className="experience-arrow"><ArrowUpRight size={19} /></div></div>
-              <div className="experience-item reveal"><div className="experience-date">2025–26</div><div className="experience-main"><div className="experience-tag"><ChartNoAxesCombined size={15} /> STRATEGY / CASE COMPETITIONS</div><h3>Business Case Portfolio</h3><p>Strategy projects spanning banking, healthcare, FMCG, digital transformation, and growth — with a focus on structured problem solving and story-led recommendations.</p></div><div className="experience-arrow"><ArrowUpRight size={19} /></div></div>
-              <div className="experience-item reveal"><div className="experience-date">2025–26</div><div className="experience-main"><div className="experience-tag"><BrainCircuit size={15} /> RESEARCH</div><h3>AI, RAG & Business Process Management</h3><p>Research and applied work around retrieval-augmented generation, business news Q&A, and AI-enabled process improvement.</p></div><div className="experience-arrow"><ArrowUpRight size={19} /></div></div>
+              <div className="experience-item reveal"><div className="experience-date">2026</div><div className="experience-main"><div className="experience-tag"><BriefcaseBusiness size={15} /> BUSINESS DEVELOPMENT</div><h3>Telkom Corporate University</h3><p>Product and pricing research, process mapping, standardisation, and digital learning ecosystem work inside Solution Management.</p></div></div>
+              <div className="experience-item reveal"><div className="experience-date">2025–26</div><div className="experience-main"><div className="experience-tag"><ChartNoAxesCombined size={15} /> STRATEGY / CASE COMPETITIONS</div><h3>Business Case Portfolio</h3><p>Strategy projects spanning banking, healthcare, FMCG, digital transformation, and growth — with a focus on structured problem solving and story-led recommendations.</p></div></div>
+              <div className="experience-item reveal"><div className="experience-date">2025–26</div><div className="experience-main"><div className="experience-tag"><BrainCircuit size={15} /> RESEARCH</div><h3>AI, RAG & Business Process Management</h3><p>Research and applied work around retrieval-augmented generation, business news Q&A, and AI-enabled process improvement.</p></div></div>
             </div>
           </section>
   
@@ -149,6 +150,13 @@ export default function HomePage() {
               <div className="contact-actions">
                 <a className="button button-primary" href={`mailto:${site.email}`}>GET IN TOUCH <Mail size={17} /></a>
                 <a className="button button-outline" href="#work">BROWSE THE WORK <ArrowRight size={17} /></a>
+              </div>
+              <div className="contact-socials">
+                {site.socials.map((social) => (
+                  <a key={social.id} className="social-link" href={social.href} target="_blank" rel="noopener noreferrer">
+                    <SocialIcon id={social.id} /> {social.label}
+                  </a>
+                ))}
               </div>
               <div className="contact-footer"><span>FERDI HASSAN</span><span>INFORMATION SYSTEMS × STRATEGY × TECHNOLOGY</span><span>© 2026</span></div>
             </div>
