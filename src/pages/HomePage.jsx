@@ -49,12 +49,7 @@ export default function HomePage() {
               <div className="hero-art-card">
                 <div className="hero-art-header"><span>FERDI / 07</span><span>STUDIO NOTES</span></div>
                 <div className="hero-portrait">
-                  <div className="portrait-ring ring-a" />
-                  <div className="portrait-ring ring-b" />
-                  <div className="portrait-orb orb-a" />
-                  <div className="portrait-orb orb-b" />
-                  <div className="portrait-grid" />
-                  <div className="portrait-initials">FH</div>
+                  <img className="hero-photo" src={site.photo.src} alt={site.photo.alt} />
                   <span className="portrait-label label-a">BUSINESS</span>
                   <span className="portrait-label label-b">SYSTEMS</span>
                   <span className="portrait-label label-c">STRATEGY</span>

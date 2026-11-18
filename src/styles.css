@@ -57,15 +57,8 @@ button { border: 0; background: transparent; color: inherit; cursor: pointer; }
 .hero-art-card { width: min(560px, 100%); height: 610px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 34px; box-shadow: var(--shadow); padding: 22px; transform: rotate(2.2deg); position: relative; overflow: hidden; }
 .hero-art-header, .visual-topline { display: flex; align-items: center; justify-content: space-between; color: var(--ink-soft); }
 .hero-portrait { height: 445px; margin-top: 22px; position: relative; border-radius: 24px; background: var(--navy); overflow: hidden; display: grid; place-items: center; }
-.portrait-grid { position: absolute; inset: 0; opacity: .18; background: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px); background-size: 34px 34px; }
-.portrait-ring { position: absolute; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; }
-.ring-a { width: 360px; height: 360px; }
-.ring-b { width: 470px; height: 470px; border-style: dashed; }
-.portrait-orb { position: absolute; border-radius: 50%; filter: blur(.3px); }
-.orb-a { width: 220px; height: 220px; right: -50px; top: 25px; background: var(--lime); mix-blend-mode: screen; opacity: .95; }
-.orb-b { width: 170px; height: 170px; left: -40px; bottom: 15px; background: var(--violet); mix-blend-mode: screen; opacity: .75; }
-.portrait-initials { font-size: 130px; font-weight: 800; letter-spacing: -.13em; color: var(--paper); position: relative; z-index: 2; }
-.portrait-label { position: absolute; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .12em; color: var(--paper); padding: 7px 9px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; backdrop-filter: blur(4px); }
+.hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.portrait-label { position: absolute; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .12em; color: var(--paper); padding: 7px 9px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; backdrop-filter: blur(4px); background: rgba(23,24,32,.35); z-index: 2; }
 .label-a { top: 36%; left: 9%; transform: rotate(-10deg); }
 .label-b { right: 8%; top: 49%; transform: rotate(8deg); }
 .label-c { left: 18%; bottom: 10%; transform: rotate(-4deg); }
@@ -87,7 +80,7 @@ button { border: 0; background: transparent; color: inherit; cursor: pointer; }
 .about-note { background: var(--navy); color: white; position: relative; overflow: hidden; }
 .about-note::before { content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); right: -90px; top: -80px; }
 .about-note::after { content: ''; position: absolute; width: 160px; height: 160px; border-radius: 50%; background: var(--lime); right: 65px; bottom: -85px; opacity: .9; }
-.about-note p { max-width: 720px; font-size: 29px; line-height: 1.18; letter-spacing: -.04em; position: relative; z-index: 1; }
+.about-note p { max-width: 720px; font-size: 22px; line-height: 1.35; letter-spacing: -.04em; position: relative; z-index: 1; }
 .about-note .signature { position: absolute; right: 34px; bottom: 24px; font-size: 85px; font-weight: 800; letter-spacing: -.08em; z-index: 2; }
 .capability-card { background: var(--paper); }
 .lens-row { display: grid; grid-template-columns: 50px 1fr; gap: 15px; padding: 22px 0; border-bottom: 1px solid var(--line); }
@@ -212,7 +205,7 @@ button { border: 0; background: transparent; color: inherit; cursor: pointer; }
   .main-nav .nav-cv::after { display: none; }
   .menu-button { display: grid; place-items: center; }
   .header-cta { display: none; }
-  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; }
   .hero-art { min-height: 520px; }
   .hero-ribbon { position: relative; grid-column: 1; left: -6vw; width: 112vw; margin-top: 20px; }
   .about-grid, .approach-layout { grid-template-columns: 1fr; }
@@ -235,15 +228,10 @@ button { border: 0; background: transparent; color: inherit; cursor: pointer; }
   .hero-art { min-height: 430px; }
   .hero-art-card { height: 440px; border-radius: 24px; padding: 16px; }
   .hero-portrait { height: 320px; }
-  .portrait-initials { font-size: 86px; }
-  .ring-a { width: 240px; height: 240px; }
-  .ring-b { width: 330px; height: 330px; }
-  .orb-a { width: 150px; height: 150px; }
-  .orb-b { width: 120px; height: 120px; }
   .section-heading-row { flex-direction: column; align-items: flex-start; gap: 0; }
   .section-heading h2 { margin-bottom: 26px; }
   .about-card { min-height: 350px; padding: 25px; border-radius: 24px; }
-  .about-note p { font-size: 24px; }
+  .about-note p { font-size: 18px; }
   .project-visual { min-height: 280px !important; }
   .project-meta h3 { font-size: 28px; }
   .approach-step { grid-template-columns: 34px 40px 1fr; gap: 11px; }
