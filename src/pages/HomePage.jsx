@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import ProjectVisual from '../components/ProjectVisual';
 import SocialIcon from '../components/SocialIcons';
-import LegacyProjectModal from '../components/LegacyProjectModal';
+import ProjectModal from '../components/ProjectModal';
 import { filters, getPublishedProjects } from '../data/projects';
 import { site } from '../data/site';
 
@@ -163,7 +163,7 @@ export default function HomePage() {
           </section>
       </main>
 
-      {activeProject && <LegacyProjectModal project={activeProject} onClose={closeProject} />}
+      {activeProject && <ProjectModal project={activeProject} onClose={closeProject} />}
     </>
   );
 }
