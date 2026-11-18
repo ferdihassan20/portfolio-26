@@ -17,6 +17,7 @@ Then open the local URL shown in the terminal (usually http://localhost:5173).
 
 ```bash
 npx playwright install chromium webkit   # once, downloads the test browsers
+# Browser tests use a sample deck (e2e/fixtures/sample-deck.pdf) that only exists in test builds.
 npm test                                 # component and data tests (Vitest)
 npm run test:e2e                         # browser tests on desktop, iPad and iPhone sizes (Playwright)
 ```
@@ -56,7 +57,7 @@ Each project in `src/data/projects.js` appears as a card in **Work**. It opens a
 | `draft` | `true` hides the project from the site until it is ready. |
 | `accent` | Card colour: `navy`, `mint`, `violet`, `lime` or `sand`. |
 
-> **To do:** the project "Consumer Strategy Lab" uses the Kita Ngantuk (GMBCC semifinal) deck. Update its title and summary to match.
+> **To do:** no project has a deck yet, so every project shows "Deck coming soon". "Consumer Strategy Lab" is meant for the Kita Ngantuk (GMBCC semifinal) deck: compress it (below), add it, and update the project's title and summary to match.
 
 ### Adding a project PDF
 
@@ -67,7 +68,7 @@ Each project in `src/data/projects.js` appears as a card in **Work**. It opens a
    ```
 
    The script keeps text and charts sharp. It compresses images and **linearizes** the file, so browsers can load it page by page instead of downloading all of it first.
-2. **Keep each PDF under 25 MB.** If a deck is still bigger, export it again from Canva or PowerPoint with "compress images" or a lower image quality, then run the script again.
+2. **Size:** aim for **10 MB or less** per PDF; **25 MB is the maximum**. Visitors on phones load the deck over mobile data. If a deck is still bigger, export it again from Canva or PowerPoint with "compress images" or a lower image quality, then run the script again. Don't rasterise decks that contain tables: small numbers become unreadable. (GitHub also warns about files over 50 MB and rejects files over 100 MB.)
 3. Use lowercase file names without spaces, for example `my-deck.pdf`.
 4. Set the project's `pdf` to `{ src: '/projects/my-deck.pdf' }`.
 
