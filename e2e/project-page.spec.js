@@ -1,7 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { serveSampleDeck } from './helpers';
+
+test.beforeEach(({ page }) => serveSampleDeck(page));
 
 test('layout: side by side on desktop with sticky info, stacked on smaller screens', async ({ page }, testInfo) => {
-  await page.goto('/work/consumer-strategy');
+  await page.goto('/work/e2e-sample-deck');
   const info = page.locator('.project-info');
   const viewer = page.locator('.project-deck');
   await expect(viewer.locator('.pdf-page[data-page-number="1"] canvas')).toBeVisible({ timeout: 30_000 });
@@ -34,7 +37,7 @@ test('unknown project shows not found', async ({ page }) => {
 
 test('on phones and tablets the deck does not trap page scrolling', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === 'desktop', 'stacked layout only');
-  await page.goto('/work/consumer-strategy');
+  await page.goto('/work/e2e-sample-deck');
   const viewer = page.locator('.detail-pdf');
   await expect(viewer).toBeVisible();
   expect(await viewer.evaluate((el) => getComputedStyle(el).overscrollBehaviorY)).toBe('auto');

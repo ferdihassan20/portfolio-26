@@ -22,8 +22,8 @@ test('shows project info and passes the PDF src (null when absent)', () => {
 });
 
 test('passes the deck src for a project with a PDF', () => {
-  renderModal(vi.fn(), getProjectById('consumer-strategy'));
-  expect(screen.getByTestId('pdf')).toHaveAttribute('data-src', '/projects/kita-ngantuk-gmbcc-semifinal.pdf');
+  renderModal(vi.fn(), { ...ocean, pdf: { src: '/projects/deck.pdf' } });
+  expect(screen.getByTestId('pdf')).toHaveAttribute('data-src', '/projects/deck.pdf');
 });
 
 test('VIEW FULL CASE links to the detail page', () => {

@@ -1,3 +1,5 @@
+import { e2eProjects } from './e2eProjects';
+
 // Portfolio projects. Each project gets a detail page at /work/<id>.
 //
 // - pdf: { src: '/projects/<file>.pdf' } shows the deck; null shows "Deck coming soon".
@@ -68,7 +70,7 @@ export const projects = [
     id: 'consumer-strategy',
     type: 'Business Case',
     industry: 'FMCG',
-    // TODO(client): rename title/summary to match the Kita Ngantuk (GMBCC semifinal) deck.
+    // TODO(client): add this project's deck to public/projects/ and set pdf (see README).
     title: 'Consumer Strategy Lab',
     summary: 'A consumer-focused case exploring positioning, customer insight, and strategic growth under competitive pressure.',
     year: '2025',
@@ -77,10 +79,13 @@ export const projects = [
     tags: ['Need states', 'Jobs-to-be-done', 'Context'],
     context: '[Placeholder] Describe the problem and background of this project.',
     outcome: '[Placeholder] Describe the result, key insight, or achievement.',
-    pdf: { src: '/projects/kita-ngantuk-gmbcc-semifinal.pdf' },
+    pdf: null,
     draft: false,
   },
 ];
+
+// End-to-end test builds (vite build --mode e2e) add a sample deck project; never in production.
+if (import.meta.env.MODE === 'e2e') projects.push(...e2eProjects);
 
 export const filters = ['All', 'Business Case', 'Strategy', 'Business Development', 'Research'];
 

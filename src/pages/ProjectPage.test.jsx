@@ -51,11 +51,16 @@ test('Download PDF is absent when the project has no PDF', () => {
 });
 
 test('Download PDF links to the deck when there is one', () => {
-  renderAt('consumer-strategy');
-  const link = screen.getByRole('link', { name: /download pdf/i });
-  expect(link).toHaveAttribute('href', '/projects/kita-ngantuk-gmbcc-semifinal.pdf');
-  expect(link).toHaveAttribute('download');
-  expect(screen.getByTestId('pdf')).toHaveAttribute('data-src', '/projects/kita-ngantuk-gmbcc-semifinal.pdf');
+  projects.push({ ...projects[0], id: 'with-deck', pdf: { src: '/projects/deck.pdf' } });
+  try {
+    renderAt('with-deck');
+    const link = screen.getByRole('link', { name: /download pdf/i });
+    expect(link).toHaveAttribute('href', '/projects/deck.pdf');
+    expect(link).toHaveAttribute('download');
+    expect(screen.getByTestId('pdf')).toHaveAttribute('data-src', '/projects/deck.pdf');
+  } finally {
+    projects.pop();
+  }
 });
 
 test.each(['nope', 'hidden-draft'])('unknown or draft id %s shows Project not found', (id) => {

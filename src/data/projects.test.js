@@ -19,8 +19,8 @@ test('ids are unique and URL-safe', () => {
   ids.forEach((id) => expect(id).toMatch(/^[a-z0-9-]+$/));
 });
 
-test('consumer-strategy uses the Kita Ngantuk deck', () => {
-  expect(getProjectById('consumer-strategy').pdf.src).toBe('/projects/kita-ngantuk-gmbcc-semifinal.pdf');
+test('e2e sample deck project is not part of normal builds', () => {
+  expect(getProjectById('e2e-sample-deck')).toBeUndefined();
 });
 
 test('draft projects are hidden', () => {
@@ -43,4 +43,11 @@ test('adjacent projects wrap around', () => {
   expect(getAdjacentProjects(list[0].id).prev).toBe(list.at(-1));
   expect(getAdjacentProjects(list.at(-1).id).next).toBe(list[0]);
   expect(getAdjacentProjects(list[0].id).next).toBe(list[1]);
+});
+
+test('every project PDF exists in public/ (a missing file would show an error to visitors)', async () => {
+  const { existsSync } = await import('node:fs');
+  for (const p of getPublishedProjects()) {
+    if (p.pdf) expect(existsSync(`public${p.pdf.src}`), `${p.id}: public${p.pdf.src}`).toBe(true);
+  }
 });
