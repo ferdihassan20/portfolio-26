@@ -98,7 +98,7 @@ const projects = [
     role: 'Market Research · Consumer Insight · Storytelling',
     impact: 'Growth strategy',
     accent: 'sand',
-    pdf: { src: '/projects/Kita%20Ngantuk_GMBCCSemifinal.pdf', pages: 41 },
+    pdf: { src: '/projects/kita-ngantuk-gmbcc-semifinal.pdf', pages: 41 },
     slides: [
       { kicker: '01 — Consumer', title: 'The customer is not a demographic.', body: 'The strategic opportunity emerges when you understand the tension behind the purchase, not just the age group attached to it.', blocks: ['Need states', 'Jobs-to-be-done', 'Context'] },
       { kicker: '02 — Opportunity', title: 'Find the gap between what people say and do.', body: 'A sharper consumer insight creates a more defendable positioning — and a better reason to choose the brand.', blocks: ['Behaviour', 'Barrier', 'Motivation'] },
