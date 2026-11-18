@@ -14,6 +14,7 @@
     "lucide-react": "1.32.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "react-pdf": "11.1.0",
     "react-router": "8.5.1"
   },
   "devDependencies": {
