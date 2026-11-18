@@ -7,14 +7,19 @@ set -euo pipefail
 in="${1:?usage: optimize-pdf.sh input.pdf [output.pdf] [image-dpi]}"
 out="${2:-${in%.pdf}.optimized.pdf}"
 dpi="${3:-150}"
-tmp="$(mktemp -t optimize-pdf).pdf"
-trap 'rm -f "$tmp"' EXIT
+work="$(mktemp -d)"
+tmp="$work/compressed.pdf"
+trap 'rm -rf "$work"' EXIT
 
-gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dCompatibilityLevel=1.6 \
+if ! gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dCompatibilityLevel=1.6 \
   -sColorConversionStrategy=LeaveColorUnchanged \
   -dDownsampleColorImages=true -dColorImageResolution="$dpi" \
   -dDownsampleGrayImages=true -dGrayImageResolution="$dpi" \
-  -dNOPAUSE -dBATCH -dQUIET -sOutputFile="$tmp" "$in" 2>/dev/null
+  -dNOPAUSE -dBATCH -dQUIET -sOutputFile="$tmp" "$in" 2>"$work/gs.log"; then
+  echo "Ghostscript failed on $in:" >&2
+  tail -n 5 "$work/gs.log" >&2
+  exit 1
+fi
 qpdf --linearize --warning-exit-0 --no-warn "$tmp" "$out"
 
 size() { du -h "$1" | cut -f1; }

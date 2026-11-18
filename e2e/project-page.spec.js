@@ -31,3 +31,11 @@ test('unknown project shows not found', async ({ page }) => {
   await page.goto('/work/does-not-exist');
   await expect(page.getByText('Project not found')).toBeVisible();
 });
+
+test('on phones and tablets the deck does not trap page scrolling', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name === 'desktop', 'stacked layout only');
+  await page.goto('/work/consumer-strategy');
+  const viewer = page.locator('.detail-pdf');
+  await expect(viewer).toBeVisible();
+  expect(await viewer.evaluate((el) => getComputedStyle(el).overscrollBehaviorY)).toBe('auto');
+});

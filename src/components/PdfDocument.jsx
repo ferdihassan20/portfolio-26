@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+import { PdfError, PdfLoading } from './PdfMessages';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
 
@@ -59,13 +60,8 @@ export default function PdfDocument({ src, title, className = '' }) {
         // Suspense mode would hide the whole viewer while a page loads and throw on errors.
         suspense={false}
         onLoadSuccess={({ numPages: total }) => setNumPages(total)}
-        loading={<p className="pdf-status">Loading deck…</p>}
-        error={(
-          <div className="pdf-error">
-            <p>Couldn't load the PDF.</p>
-            <a className="button button-outline" href={src} download>Download PDF</a>
-          </div>
-        )}
+        loading={<PdfLoading src={src} />}
+        error={<PdfError src={src} />}
       >
         {width > 0 && Array.from({ length: numPages }, (_, i) => i + 1).map((n) => (
           <div key={n} ref={observePage} className="pdf-page" data-page-number={n} style={{ minHeight: Math.round(width * ratio) }}>
@@ -76,7 +72,7 @@ export default function PdfDocument({ src, title, className = '' }) {
                 devicePixelRatio={pixelRatio}
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
-                loading={null}
+                loading={<p className="pdf-page-status">Loading page {n}…</p>}
                 onLoadSuccess={n === 1 ? (page) => setRatio(page.originalHeight / page.originalWidth) : undefined}
               />
             )}
