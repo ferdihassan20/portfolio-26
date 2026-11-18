@@ -17,3 +17,7 @@ build/
 Thumbs.db
 # Brainstorm mockups
 .superpowers/
+
+# Test output
+test-results/
+playwright-report/
