@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const DECK = '/__pdf-test?src=/projects/kita-ngantuk-gmbcc-semifinal.pdf';
+const DECK = '/work/consumer-strategy';
 const page1 = '.pdf-page[data-page-number="1"] canvas';
 
 test('renders the first page as a canvas', async ({ page }) => {
@@ -29,9 +29,8 @@ test('page width follows the container on resize', async ({ page }, testInfo) =>
 });
 
 test('broken PDF shows an error with a download link', async ({ page }) => {
-  // vite preview answers unknown files with index.html; Vercel returns a real 404.
-  await page.route((url) => url.pathname === '/projects/missing.pdf', (route) => route.fulfill({ status: 404, body: 'Not found' }));
-  await page.goto('/__pdf-test?src=/projects/missing.pdf');
+  await page.route((url) => url.pathname === '/projects/kita-ngantuk-gmbcc-semifinal.pdf', (route) => route.fulfill({ status: 404, body: 'Not found' }));
+  await page.goto(DECK);
   await expect(page.getByText("Couldn't load the PDF.")).toBeVisible({ timeout: 30_000 });
-  await expect(page.getByRole('link', { name: 'Download PDF' })).toHaveAttribute('href', '/projects/missing.pdf');
+  await expect(page.locator('.pdf-error').getByRole('link', { name: 'Download PDF' })).toHaveAttribute('href', '/projects/kita-ngantuk-gmbcc-semifinal.pdf');
 });
